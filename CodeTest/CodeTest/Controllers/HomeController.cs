@@ -13,18 +13,38 @@ namespace CodeTest.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+       
+        /*
+         
+           N = "0"
+[] // Empty Array
+
+N = "91"
+[91]
+
+N = "ACD42"
+[] // Empty array
+
+N = 100
+[19, 28, 37, 46, 55, 64, 73, 82, 91]  
+             
+             
+             
+             */
+
+
+        [HttpPost]
+        public ActionResult Results(Models.ViewModel model)
+        {
+           var values = Models.Utility.GetValues(model);
+
+            return PartialView("Res", new Models.ViewModel { Num = model.Num, Values = values });
+            
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+
+
     }
 }
